@@ -1,0 +1,86 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block page_title %}About us{% endblock %}
+
+{% block content %} 
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-6">
+      <h1>About KikobaApp</h1>
+      <p>Welcome to KikobaApp, your digital kikoba system designed to revolutionize kikoba activities!</p>
+      <p>KikobaApp addresses the major challenges faced by kikoba groups, providing innovative solutions for data maintenance, customer management, and digital marketing.</p>
+      <p>With KikobaApp, you can efficiently manage your kikoba group, handle a large number of customers, and ensure the security of your kikoba transactions.</p>
+      <p>Our platform is user-friendly, secure, and equipped with powerful features to streamline your kikoba operations and enhance your digital presence.</p>
+      <p>Join KikobaApp today and experience the future of kikoba management!</p>
+    </div>
+    <div class="col-md-6">
+      <img src="{% static "kikobaApp/logo/wallpaperflare.com_wallpaper.jpg" %}" alt="KikobaApp Logo" class="img-fluid">
+    </div>
+  </div>
+  
+  <div class="row mt-4">
+    <div class="col-md-12">
+      <h2>Benefits of KikobaApp</h2>
+      <ul>
+        <li>Data Maintenance: Efficiently manage and maintain kikoba data with ease.</li>
+        <li>Customer Management: Handle large numbers of customers seamlessly.</li>
+        <li>Security: Ensure the security of your kikoba transactions and sensitive information.</li>
+        <li>User-Friendly: Intuitive and easy-to-use interface for smooth kikoba operations.</li>
+        <li>Digital Marketing: Enhance your kikoba group's digital presence and reach more members.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Callback Submission Form -->
+  <div class="row mt-4">
+    <div class="col-md-6">
+      <h2>Request a Callback</h2>
+      <form method="post" action="{% url 'about' %}">
+        {% csrf_token %}
+        <div class="form-group">
+          <label for="name">Your Name:</label>
+          <input type="text" class="form-control" id="name" name="name" placeholder="Enter your name" required>
+        </div>
+        <div class="form-group">
+          <label for="phone">Phone Number:</label>
+          <input type="tel" class="form-control" id="phone" name="phone" placeholder="Enter your phone number" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required>
+          <small id="phoneHelp" class="form-text text-muted">Format: +255-6733-7873-9</small>
+        </div>
+        <div class="form-group">
+          <label for="email">Email:</label>
+          <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email">
+        </div>
+        <div class="form-group">
+          <label for="message">Message (Optional):</label>
+          <textarea class="form-control" id="message" name="message" rows="3" placeholder="Enter your message"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+    </div>
+  </div>
+  <!-- End Callback Submission Form -->
+</div>
+
+<!-- Footer Section -->
+<footer class="footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <h2>Our Mission</h2>
+        <p>At KikobaApp, our mission is to empower kikoba groups with the tools and technologies they need to thrive in the digital age. We believe that by providing innovative solutions and exceptional customer service, we can help kikoba groups achieve their goals more efficiently and effectively.</p>
+      </div>
+      <div class="col-md-6">
+        <h2>Contact Us</h2>
+        <p>If you have any questions about KikobaApp or would like to learn more about our services, please feel free to contact us using the information below:</p>
+        <p>Email: info@Mutech.com</p>
+        <p>Phone: +255-6123-5840-8</p>
+      </div>
+    </div>
+  </div>
+</footer>
+<!-- End Footer Section -->
+{% endblock %}
+
+
+

@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+
+{% block page_title %}Kikoba Investment Form{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="card">
+        <div class="card-header bg-primary text-white">
+          <h5 class="card-title mb-0">Invest with Kikoba</h5>
+        </div>
+        <div class="card-body">
+          <form action="{% url 'investment' %}" method="post">
+            {% csrf_token %}
+            <div class="form-group">
+              <label for="amount">How much would you like to invest?</label>
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">Tsh</span>
+                </div>
+                <input type="number" class="form-control" id="amount" name="amount" placeholder="Enter investment amount" required>
+              </div>
+              <small class="form-text text-muted">Minimum investment amount: Tsh100000</small>
+            </div>
+            <div class="form-group">
+              <label for="term">Select investment term (in months)</label>
+              <select class="form-control" id="term" name="term" required>
+                <option value="" disabled selected>Select term...</option>
+                <option value="1">1 months</option>
+                <option value="2">2 months</option>
+                <option value="3">3 months</option>
+                <option value="4">4 months</option>
+                <option value="5">5 months</option>
+                <option value="6">6 months</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="risk">Select your risk tolerance</label>
+              <div class="custom-control custom-radio">
+                <input type="radio" id="lowRisk" name="risk" class="custom-control-input" value="low">
+                <label class="custom-control-label" for="lowRisk">Low Risk</label>
+              </div>
+              <div class="custom-control custom-radio">
+                <input type="radio" id="mediumRisk" name="risk" class="custom-control-input" value="medium">
+                <label class="custom-control-label" for="mediumRisk">Medium Risk</label>
+              </div>
+              <div class="custom-control custom-radio">
+                <input type="radio" id="highRisk" name="risk" class="custom-control-input" value="high">
+                <label class="custom-control-label" for="highRisk">High Risk</label>
+              </div>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Invest Now</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+

@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+{% block page_title %}Registration{% endblock %}
+
+{% block content %}
+<div class="container d-flex justify-content-center align-items-center" style="min-height: 90vh;">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="registration-frame p-4 border rounded" style="max-height: 80vh; overflow-y: auto; width: 300px;">
+        <form action="{% url "register" %}" method="POST" autocomplete="off">
+          {% csrf_token %}
+          
+          <p>
+            {% if error_message %}
+              <div class="alert alert-danger" role="alert">
+                {{ error_message }}
+              </div>
+            {% endif %}
+          </p>
+          
+          <h3 class="text-center mb-4">Smartkikoba</h3>
+          
+          <div class="mb-3">
+            <input type="text" class="form-control" id="firstName" name="firstName" placeholder="Enter first name" required>
+          </div>
+          
+          <div class="mb-3">
+            <input type="text" class="form-control" id="lastName" name="lastName" placeholder="Enter last name" required>
+          </div>
+          
+          <div class="mb-3">
+            <input type="email" class="form-control" id="email" name="email" placeholder="Enter email" required>
+          </div>
+          
+          <div class="mb-3">
+            <input type="password" class="form-control" id="password" name="password" placeholder="Enter password" required>
+          </div>
+          
+          <div class="mb-3">
+            <input type="password" class="form-control" id="confirmed_password" name="confirmed_password" placeholder="Confirm password" required>
+          </div>
+          
+          <p class="text-center">Already have an account? <a href="{% url "login" %}">Sign in</a></p>
+          
+          <button type="submit" class="btn btn-primary btn-block">Register</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+
+

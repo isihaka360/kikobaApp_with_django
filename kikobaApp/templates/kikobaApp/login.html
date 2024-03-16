@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block page_title %}Login{% endblock %}
+
+{% block content %}
+<div class="container d-flex justify-content-center align-items-center" style="min-height: 90vh;">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="login-frame p-4 p-4 border rounded" style="max-height: 80vh; overflow-y: auto; width: 300px;">
+        <form action="{% url "login" %}" method="POST" autocomplete="off">
+          {% csrf_token %}
+          
+          {% if error_message %}
+          <div class="alert alert-danger" role="alert">
+            {{error_message}}
+          </div>
+          {% endif %}
+          
+          <h3 class="text-center mb-4">Smartkikoba</h3>
+          <div class="mb-3">
+            <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email" required>
+          </div>
+          <div class="mb-3">
+            <input type="password" class="form-control" id="password" name="password" placeholder="Enter your password" required>
+          </div>
+          <button type="submit" class="btn btn-primary btn-block">Login</button>
+          <p class="text-center mt-3">Don't have an account? <a href="{% url "register" %}">Sign up</a></p>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+
