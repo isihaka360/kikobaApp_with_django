@@ -9,7 +9,8 @@ from django.contrib.auth.decorators import login_required
 def callback_requuests(request):
     # handling callback requests
     pass
-
+def kikoba_documentary(request):
+    return render(request, 'kikobaApp/events.html')
 def kikoba_investment_view(request):
     # logics for investment
     return render(request, 'kikobaApp/investment.html')
@@ -43,8 +44,8 @@ def register_view(request):
         if password == confirmed_password:
             hash_password = make_password(password)
             
-            User = Customer(firstName = firstName , lastName = lastName , email = email , password = hash_password)
-            User.save()
+            user = Customer.objects.create(firstName=firstName, lastName=lastName, email=email , password=hash_password)
+            user.save()
             return redirect('login')
             
         else:
@@ -52,24 +53,42 @@ def register_view(request):
     else:
         return render(request,'kikobaApp/register.html')
     
-def login_view(request):
+# def login_view(request):
     
-    if request.method == 'POST':
-       email = request.POST['email']
-       password = request.POST['password']
-       user = authenticate(request, username=email, password=password)
-
-       if user is not None:
-        login(request, user)
-        return redirect('dashboard')
+#     if request.method == 'POST':
+#        email = request.POST.get('email')
+#        password = request.POST.get('password')
+#        user = authenticate(request,email=email, password=password)
+#        if user is not None:
+#         login(request, user)
+#         return redirect('dashboard')
     
-       else:
+#        else:
          
-         return render(request, 'kikobaApp/login.html', {'error_message': 'Invalid email or password.'})
+#          return render(request, 'kikobaApp/login.html', {'error_message': 'Invalid email or password.'})
      
-    else:
+#     else:
         
-        return render(request, 'kikobaApp/login.html')   
+#         return render(request, 'kikobaApp/login.html')  
+
+def login_view(request):
+    if request.method == 'POST':
+        email = request.POST.get('email')
+        password = request.POST.get('password')
+        # Authenticate user
+        user = authenticate(request, email = email, password = password)
+        print(user)
+        
+        if user is not None:
+            # User authentication successful
+            login(request, user)
+            return redirect('dashboard')
+        else:
+            # Invalid email or password
+            return render(request, 'kikobaApp/login.html', {'error_message': 'Invalid email or password.'})
+    else:
+        # GET request, render login page
+        return render(request, 'kikobaApp/login.html')     
     
 def logout_view(request):
     return redirect('login')   
