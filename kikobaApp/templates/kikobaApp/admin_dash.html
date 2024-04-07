@@ -1,0 +1,94 @@
+{% extends "base.html" %}
+
+{% block page_title %}Admin Dashboard{% endblock %}
+
+{% block content %}
+<nav class="navbar navbar-dark bg-dark">
+  <div class="container">
+    <span class="navbar-brand mb-0 h1">Admin Dashboard</span>
+    <div class="notification-icon active">
+      <span class="notification-badge">3</span>
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-bell" viewBox="0 0 16 16">
+        <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2zm5.473-4.763a6.527 6.527 0 0 0-1.454-2.406A7.545 7.545 0 0 0 8 8C6.968 8 1 8 1 4.5 1 2.673 2.015 1 4.5 1S8 2.673 8 4.5c0 .085-.003.169-.01.252A6.527 6.527 0 0 0 6.536 9.83 2.14 2.14 0 0 0 6 10.5h4a2.143 2.143 0 0 0-.536-.67zM13 13v-1a3 3 0 0 0-3-3V7a6 6 0 1 0-6 0v2a3 3 0 0 0-3 3v1a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1z"/>
+      </svg>
+    </div>
+    <a href="{% url 'logout' %}" class="btn btn-danger">Logout</a>
+  </div>
+</nav>
+
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="card">
+        <h2 class="card-header bg-success text-white">User Management</h2>
+        <div class="card-body">
+          <form>
+            <div class="input-group mb-3">
+              <input type="text" class="form-control" placeholder="Search for users" aria-label="Search for users" aria-describedby="button-search">
+              <button class="btn btn-outline-secondary" type="button" id="button-search">Search</button>
+            </div>
+          </form>
+          <div class="table-responsive">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Name</th>
+                  <th>Email</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>1</td>
+                  <td>John Doe</td>
+                  <td>john@example.com</td>
+                  <td>
+                    <button class="btn btn-primary btn-sm">Edit</button>
+                    <button class="btn btn-danger btn-sm">Delete</button>
+                  </td>
+                </tr>
+                <tr>
+                  <td>2</td>
+                  <td>Jane Smith</td>
+                  <td>jane@example.com</td>
+                  <td>
+                    <button class="btn btn-primary btn-sm">Edit</button>
+                    <button class="btn btn-danger btn-sm">Delete</button>
+                  </td>
+                </tr>
+                <!-- Additional rows go here -->
+              </tbody>
+            </table>
+          </div>
+          <button class="btn btn-primary">Add User</button>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="card">
+        <h2 class="card-header bg-secondary text-white">Schedule Alert</h2>
+        <div class="card-body">
+          <form>
+            <div class="mb-3">
+              <label for="phone" class="form-label">Phone Number</label>
+              <input type="tel" class="form-control" id="phone" placeholder="Enter phone number">
+            </div>
+            <div class="mb-3">
+              <label for="datetime" class="form-label">Date and Time</label>
+              <input type="datetime-local" class="form-control" id="datetime">
+            </div>
+            <button type="submit" class="btn btn-success">Schedule</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+
+
+
+
+

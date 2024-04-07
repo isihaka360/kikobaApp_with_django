@@ -1,25 +1,66 @@
 {% extends "base.html" %}
+{% load static %}
 
-{% block page_title %}Home{% endblock %}
+{% block page_title %}Welcome to KikobaAlert{% endblock %}
 
 {% block content %}
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="{% url "home" %}">KikobaAlert</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <!-- Navigation links -->
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="{% url "documentary" %}">Events</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'about' %}">About Us</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Contact</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Location</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
 <div class="container mt-5">
   <div class="row">
     <div class="col-md-6">
-      <h1>Welcome to KikobaApp</h1>
-      <p class="lead">Empowering female entrepreneurs to thrive in business!</p>
-      <p>At KikobaApp, we are dedicated to supporting women entrepreneurs in achieving their business dreams and financial independence.</p>
-      <p>Whether you're a woman starting your own business, managing a small enterprise, or leading a growing company, KikobaApp provides the tools, resources, and opportunities you need to succeed.</p>
-      <p>Join our community of empowered women and discover a world of business networking, mentorship, funding options, and financial management solutions tailored to your needs.</p>
+      <div class="content-wrapper">
+        <!-- Main heading -->
+        <h1 class="display-4">Welcome to KikobaAlert</h1>
+        
+        <!-- Subheading -->
+        <p class="lead">Facilitating Marejesho Payments with SMS Alerts, Member Account Notifications, and Admin Scheduling</p>
+        
+        <!-- Problem Statement -->
+        <p class="text-muted">In Kikoba groups, manual reminders for marejesho payments often result in missed deadlines, communication gaps, and administrative burdens, affecting the group's financial objectives.</p>
+        
+        <!-- Solution Overview -->
+        <p class="text-justify">KikobaAlert resolves these challenges by introducing an automated notification system tailored to Kikoba groups. Leveraging technology, members receive timely reminders about marejesho payments through SMS alerts and online notifications. Administrators can efficiently manage notification campaigns through the admin panel.</p>
+        
+        <!-- Additional Details -->
+        <p class="text-muted">Members can customize notification preferences, track payment history, and monitor progress. Administrators have access to tools for managing group settings and addressing issues promptly.</p>
+
+        <!-- Additional Description -->
+        <p>KikobaAlert is designed to streamline marejesho payment processes within Kikoba groups, ensuring smooth communication and effective financial management. Our platform prioritizes user experience and offers intuitive interfaces for both members and administrators. With KikobaAlert, empower your group with efficient marejesho payment management and seamless communication.</p>
+      </div>
     </div>
+    
+    <!-- Quick Links Section -->
     <div class="col-md-6">
       <div class="card">
         <div class="card-body">
           <h5 class="card-title">Quick Links</h5>
           <ul class="list-group list-group-flush">
-            <li class="list-group-item"><a href="{% url "about" %}">About KikobaApp</a></li>
-            <li class="list-group-item"><a href="{% url "login" %}">Login</a></li>
-            <li class="list-group-item"><a href="{% url "register" %}">Sign Up</a></li>
+            <li class="list-group-item"><a href="{% url 'login' %}" class="btn btn-primary btn-block">Login</a></li>
+            <li class="list-group-item"><a href="{% url 'register' %}" class="btn btn-secondary btn-block">Sign Up</a></li>
           </ul>
         </div>
       </div>
@@ -27,4 +68,8 @@
   </div>
 </div>
 {% endblock %}
+
+
+
+
 
